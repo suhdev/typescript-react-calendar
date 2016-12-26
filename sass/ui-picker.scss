@@ -1,0 +1,223 @@
+$ts-ui-date-picker-bg:white !default;
+$ts-ui-date-picker-header-bg:white !default;
+$ts-ui-date-picker-selected-bg:lighten(red,20%) !default;
+$ts-ui-date-picker-selected-fg:white !default;
+$ts-ui-date-picker-current-bg:darken(lightblue,20%) !default;
+$ts-ui-date-picker-current-fg:white !default;
+$ts-ui-date-picker-hover-bg:lightblue !default;
+$ts-ui-date-picker-month-picker-hover-bg:darken(lightblue,20%) !default;
+$ts-ui-date-picker-month-picker-hover-fg:white !default;
+$ts-ui-date-picker-cell-bg:white !default;
+$ts-ui-date-picker-nav-bg:lighten(lightblue,10%) !default;
+$ts-ui-date-picker-nav-fg:white;
+%box{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+%no-text-select,.no-text-select{
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+.ts-ui-datepicker{
+	@extend %box;
+	@extend %no-text-select;
+	position:absolute;
+	top:100%;
+	width:100%;
+	min-width: 294px;
+	max-width:42px*7;
+    padding: 10px;
+    font-size:12px;
+    background: $ts-ui-date-picker-bg;
+    z-index:200;
+    display:none;
+    -webkit-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
+    -webkit-box-shadow:$base-box-shadow;
+	box-shadow:$base-box-shadow;
+    &[data-visible="true"]{
+    	display:block;
+    }
+
+    &[data-direction="left"]{
+    	left:0px;
+    }
+
+    &[data-direction="right"]{
+    	right:0px;
+    }
+	.picker-header{
+		@extend %box;
+		@extend %clearfix;
+		background-color: $ts-ui-date-picker-header-bg;
+		text-transform:uppercase;
+		height:42px;
+		line-height:42px;
+
+		.picker-prev,.picker-next{
+			@extend %box;
+			float:left;
+			width:25%;
+			text-align:center;
+			line-height:42px;
+			span{
+				@extend %box;
+				display:inline-block;
+				height:36px;
+				line-height:36px;
+				width:36px;
+				-webkit-border-radius: 50%;
+				-moz-border-radius: 50%;
+				-ms-border-radius: 50%;
+				-o-border-radius: 50%;
+				border-radius: 50%;
+				cursor:pointer;
+				background-color: 
+				&:hover{
+					background-color: $ts-ui-date-picker-nav-bg;
+					color:$ts-ui-date-picker-nav-fg;
+				}
+			}
+		}
+		.year-month-picker{
+			@extend %box;
+			float:left;
+			width:50%;
+
+			.year-picker,.month-picker{
+				@extend %box;
+				float:left;
+				width:50%;
+				cursor:pointer;
+				text-align:center;
+			}
+
+			.month-label{
+				cursor:pointer;
+			}
+
+			.year-label{
+				cursor:pointer;
+			}
+		}
+	}
+	.day-selector,.month-selector,.year-selector{
+		display:none;
+	}
+	.picker-table{
+		@extend %box;
+		width:100%;
+		th{
+			text-transform:uppercase;
+			font-weight:bold;
+			font-size:12px;
+
+		}
+		th,td{
+			@extend %box;
+			height:42px;
+			width:42px;
+			line-height:42px;
+			padding:0px;
+			vertical-align:middle;
+			text-align:center;
+			background-color: $ts-ui-date-picker-cell-bg;
+
+			span{
+				@extend %box;
+				display:inline-block;
+				text-align:center;
+				cursor:pointer;
+
+				&:hover{
+					background-color:$ts-ui-date-picker-hover-bg ;
+				}
+
+				&.picker-day{
+					width:36px;
+					height:36px;
+					line-height:36px;
+					-webkit-border-radius: 50%;
+					-moz-border-radius: 50%;
+					-ms-border-radius: 50%;
+					-o-border-radius: 50%;
+					border-radius: 50%;
+				}
+			}
+
+			&.current{
+				span{
+					background-color: $ts-ui-date-picker-current-bg;
+					color:$ts-ui-date-picker-current-fg;
+				}
+			}
+			
+			&.selected{
+				span{
+					background-color: $ts-ui-date-picker-selected-bg;
+					color:$ts-ui-date-picker-selected-fg;
+				}
+			}
+		}
+
+
+
+	}
+	.picker-month,.picker-year{
+		@extend %box;
+		font-size:12px;
+		display:block;
+		float:left;
+		cursor:pointer;
+		text-align:center;
+
+		&:hover{
+			background-color: $ts-ui-date-picker-month-picker-hover-bg;
+			color:$ts-ui-date-picker-month-picker-hover-fg;
+		}
+	}
+	.month-selector{
+
+		.picker-month{
+			
+			width:25%;
+			height:42px;
+			line-height:42px;
+			text-align:center;
+
+			
+		}
+	}
+
+	.year-selector{
+		.picker-year{
+			width:20%;
+			height:36px;
+			line-height:36px;
+		}
+	}
+
+	&.day-selection{
+		.day-selector{
+			display:block;
+		}
+	}
+
+	&.month-selection {
+		.month-selector{
+			display:block;
+		}
+	}
+
+	&.year-selection{
+		.year-selector{
+			display:block;
+		}
+	}
+}
